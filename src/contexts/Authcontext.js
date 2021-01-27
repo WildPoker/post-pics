@@ -10,14 +10,31 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const openModal = () => {
-    setOpen(true);
-    console.log(open);
+  const [open, setOpen] = useState({
+    login: false,
+    signup: false,
+  });
+  const openLoginModal = () => {
+    setOpen({
+      login: true,
+    });
   };
 
-  const closeModal = () => {
-    setOpen(false);
+  const closeLoginModal = () => {
+    setOpen({
+      login: false,
+    });
+  };
+  const openSignupModal = () => {
+    setOpen({
+      signup: true,
+    });
+  };
+
+  const closeSignupModal = () => {
+    setOpen({
+      signup: false,
+    });
   };
 
   useEffect(() => {
@@ -41,8 +58,10 @@ export function AuthProvider({ children }) {
     loading,
     open,
     Logout,
-    openModal,
-    closeModal,
+    openLoginModal,
+    closeLoginModal,
+    openSignupModal,
+    closeSignupModal,
     login,
   };
 

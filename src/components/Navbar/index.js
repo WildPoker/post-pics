@@ -13,19 +13,19 @@ import {
   DialogActions,
 } from "@material-ui/core";
 import PhotoCameraOutlinedIcon from "@material-ui/icons/PhotoCameraOutlined";
-import Login from "../Login";
+import Login from "../Login and Signup/Login";
 
 import { useAuth } from "../../contexts/Authcontext";
 
 function Navbar(props) {
   const classes = useStyles();
-  const { currentUser, Logout, openModal, closeModal } = useAuth();
+  const { currentUser, Logout, openLoginModal, closeLoginModal } = useAuth();
   const handleOpen = () => {
-    openModal();
+    openLoginModal();
   };
 
   const handleClose = () => {
-    closeModal();
+    closeLoginModal();
   };
 
   const LogoutButton = () => {
@@ -45,6 +45,7 @@ function Navbar(props) {
             className={classes.PhotoButton}
             color="inherit"
             aria-label="Photo"
+            style={{ color: "#9dad7f" }}
           >
             <PhotoCameraOutlinedIcon />
           </IconButton>
@@ -55,13 +56,22 @@ function Navbar(props) {
             {currentUser ? (
               <LogoutButton />
             ) : (
-              <Button
-                onClick={handleOpen}
-                color="inherit"
-                className={classes.Button}
-              >
-                Login
-              </Button>
+              <>
+                <Button
+                  onClick={handleOpen}
+                  color="inherit"
+                  className="Loginbtn"
+                >
+                  Login
+                </Button>
+                <Button
+                  onClick={handleOpen}
+                  color="inherit"
+                  className="Signupbtn"
+                >
+                  Signup
+                </Button>
+              </>
             )}
           </Box>
         </Toolbar>

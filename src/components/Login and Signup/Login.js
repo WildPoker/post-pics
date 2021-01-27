@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import useStyles from "./styles";
-import {
-  Button,
-  Input,
-  InputLabel,
-  InputAdornment,
-  Modal,
-} from "@material-ui/core";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import CircleLoader from "react-spinners/CircleLoader";
+import useStyles from "./LoginStyles";
+import { Button, Modal, TextField } from "@material-ui/core";
 import { useAuth } from "../../contexts/Authcontext";
 
 function Login() {
   const classes = useStyles();
-  const { login, open, openModal, closeModal } = useAuth();
+  const { login, open, closeLoginModal } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
@@ -23,7 +14,7 @@ function Login() {
   });
 
   const handleClose = (e) => {
-    closeModal();
+    closeLoginModal();
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +22,7 @@ function Login() {
     try {
       setLoading(true);
       await login(user.email, user.password);
-      closeModal();
+      closeLoginModal();
       setLoading(false);
     } catch {
       setError("Failed to Login!");
@@ -51,22 +42,38 @@ function Login() {
 
   const body = (
     <>
-      <div
-        style={{
-          height: "60vh",
-          width: "20vw",
-          backgroundColor: "white",
-          border: "solid 2px black",
-        }}
-      >
-        <h1>NOT WORKING!!!</h1>
+      <div className={classes.Container}>
+        <form className={classes.form} noValidate autoComplete="off">
+          <div className={classes.box}>
+            <TextField
+              id="outlined-basic"
+              label="Username"
+              variant="outlined"
+              className={classes.textField}
+            />
+          </div>
+          <div className={classes.box}>
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              className={classes.textField}
+            />
+          </div>
+          <a href="#" className={classes.SignupBtn}>
+            Signup?
+          </a>
+          <Button color="secondary" className={classes.button}>
+            Login
+          </Button>
+        </form>
       </div>
     </>
   );
   return (
     <>
       <Modal
-        open={open}
+        open={open.login}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"

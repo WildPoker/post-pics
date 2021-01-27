@@ -9,16 +9,23 @@ body {
 
 .App {
   min-height: 100vh;
-  background-color: #393e46;
+  background-color: #c7cfb7;
 }
 
-.MuiBox-root {
-  border-top: 3px solid transparent;
-  display: inline-block;
+.MuiBox-root .Loginbtn {
+  border-bottom: 3px solid transparent;
 }
 
-.MuiBox-root:hover {
-  border-top: 3px solid #b55400;
+.MuiBox-root .Loginbtn:hover {
+  border-bottom: 3px solid #9dad7f;
+}
+
+.MuiBox-root .Signupbtn {
+  border-bottom: 3px solid transparent;
+}
+
+.MuiBox-root .Signupbtn:hover {
+  border-bottom: 3px solid #9dad7f;
 }
 
 .Loader {

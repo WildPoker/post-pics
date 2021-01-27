@@ -3,15 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    bottom: "0",
-    position: "fixed",
+    marginBottom: "50px",
     width: "100%",
+    color: "#9dad7f",
     // overflow: "hidden",
   },
 
   Toolbar: {
     minHeight: "5vh !important",
-    backgroundColor: "#222831",
+    backgroundColor: "#557174",
   },
   PhotoButton: {
     marginRight: theme.spacing(2),
