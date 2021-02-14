@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useStyles from "./styles";
 import {
   AppBar,
@@ -7,25 +7,20 @@ import {
   Toolbar,
   IconButton,
   Box,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
 } from "@material-ui/core";
 import PhotoCameraOutlinedIcon from "@material-ui/icons/PhotoCameraOutlined";
-import Login from "../Login and Signup/Login";
-
+import LogSign from "../Login and Signup";
 import { useAuth } from "../../contexts/Authcontext";
 
 function Navbar(props) {
   const classes = useStyles();
-  const { currentUser, Logout, openLoginModal, closeLoginModal } = useAuth();
-  const handleOpen = () => {
+  const { currentUser, Logout, openLoginModal, openSignupModal } = useAuth();
+  const handleOpenLogin = () => {
     openLoginModal();
   };
 
-  const handleClose = () => {
-    closeLoginModal();
+  const handleOpenSignup = () => {
+    openSignupModal();
   };
 
   const LogoutButton = () => {
@@ -58,14 +53,14 @@ function Navbar(props) {
             ) : (
               <>
                 <Button
-                  onClick={handleOpen}
+                  onClick={handleOpenLogin}
                   color="inherit"
                   className="Loginbtn"
                 >
                   Login
                 </Button>
                 <Button
-                  onClick={handleOpen}
+                  onClick={handleOpenSignup}
                   color="inherit"
                   className="Signupbtn"
                 >
@@ -76,7 +71,7 @@ function Navbar(props) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Login />
+      <LogSign />
     </div>
   );
 }

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import useStyles from "./LoginStyles";
-import { Button, Modal, TextField } from "@material-ui/core";
+import useStyles from "./SignupStyles";
+import {
+  Button,
+  Modal,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Slide,
+} from "@material-ui/core";
 import { useAuth } from "../../contexts/Authcontext";
 
 function Signup() {
   const classes = useStyles();
-  const { open, openModal, closeModal } = useAuth();
+  const { open, closeSignupModal, openLoginModal, signup } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
@@ -18,18 +27,20 @@ function Signup() {
   });
 
   const handleClose = (e) => {
-    closeModal();
+    closeSignupModal();
   };
-  const handleSubmit = async (e) => {
+
+  const handleSignup = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      await login(user.email, user.password);
-      closeModal();
-      setLoading(false);
-    } catch {
-      setError("Failed to Login!");
+    if (user.password === user.conpassword) {
+      signup(
+        user.email.toLowerCase(),
+        user.password,
+        user.firstname,
+        user.lastname,
+        user.gender
+      );
     }
   };
 
@@ -46,38 +57,92 @@ function Signup() {
 
   const body = (
     <>
-      <div className={classes.Container}>
-        <form className={classes.form} noValidate autoComplete="off">
-          <div className={classes.box}>
-            <TextField
-              id="outlined-basic"
-              label="Username"
-              variant="outlined"
-              className={classes.textField}
-            />
-          </div>
-          <div className={classes.box}>
-            <TextField
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              className={classes.textField}
-            />
-          </div>
-          <a href="#" className={classes.SignupBtn}>
-            Signup?
-          </a>
-          <Button color="secondary" className={classes.button}>
-            Login
-          </Button>
-        </form>
-      </div>
+      <Slide direction="up" in={open.signup}>
+        <div className={classes.Container}>
+          <form
+            className={classes.form}
+            autoComplete="off"
+            onSubmit={handleSignup}
+          >
+            <div className={classes.box}>
+              <TextField
+                label="Email"
+                type="email"
+                name="email"
+                variant="outlined"
+                className={classes.textField}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                label="First Name"
+                name="firstname"
+                variant="outlined"
+                className={classes.textField}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                label="Last Name"
+                name="lastname"
+                variant="outlined"
+                className={classes.textField}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={classes.box2}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel>Gender</InputLabel>
+                <Select
+                  value={user.gender}
+                  name="gender"
+                  onChange={handleChange}
+                  label="Gender"
+                  autoWidth="true"
+                >
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                label="Password"
+                name="password"
+                type="password"
+                variant="outlined"
+                className={classes.textField}
+                onChange={handleChange}
+                required
+              />
+              <TextField
+                label="Confirm Password"
+                name="conpassword"
+                type="password"
+                variant="outlined"
+                className={classes.textField}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <a
+              className={classes.SignupBtn}
+              style={{ cursor: "pointer" }}
+              onClick={openLoginModal}
+            >
+              Login?
+            </a>
+            <Button color="secondary" className={classes.button} type="submit">
+              Signup
+            </Button>
+          </form>
+        </div>
+      </Slide>
     </>
   );
   return (
     <>
       <Modal
-        open={open}
+        open={open.signup}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
@@ -93,4 +158,4 @@ function Signup() {
   );
 }
 
-export default Login;
+export default Signup;

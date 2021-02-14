@@ -1,85 +1,85 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  error: {
-    color: "red",
-  },
   Container: {
-    height: "320px",
-    width: "500px",
+    padding: "0 20px 0 20px",
+    height: "500px",
+    width: "450px",
     backgroundColor: "#f7f7e8",
-    borderRadius: "1%",
-    boxShadow: "5px 6px #9dad7f",
+    borderRadius: "5%",
     border: "2px solid #c7cfb7",
+    alignContent: "center",
   },
-  form: {
-    width: "100%",
-    height: "100%",
-    position: "static",
-  },
-  box: {
-    display: "inline-block",
-    margin: "auto",
-    width: "50%",
-  },
-  box2: {
-    display: "inline-block",
-    margin: "auto",
-    width: "50%",
-  },
-  textField: {
-    margin: "30px 0 0 15px",
-    width: "90% !important",
-    "& label.Mui-focused": {
-      color: "#557174",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#c7cfb7",
-      },
-      "&:hover fieldset": {
-        borderColor: "#c7cfb7",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#557174",
-        borderWidth: "3px",
-      },
-    },
-  },
-  formControl: {
-    margin: "30px 0 0 15px",
-
-    width: "90% !important",
-    "& label.Mui-focused": {
-      color: "#557174",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#c7cfb7",
-      },
-      "&:hover fieldset": {
-        borderColor: "#c7cfb7",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#557174",
-        borderWidth: "3px",
-      },
-    },
-  },
-
-  select: {},
-
-  SignupBtn: {
-    color: "#9dad7f",
-    float: "left",
-    margin: "15px",
-  },
-  button: {
-    display: "block",
-    color: "#9dad7f",
-    fontWeight: "bold",
+  CloseButton: {
+    color: "#9b5151",
+    marginRight: "-30px",
+    backgroundColor: "transparent",
     float: "right",
-    margin: "10px",
+  },
+  ImageContainer: {
+    marginTop: "50px",
+    marginBottom: "10px",
+    border: "1px dotted gray",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100% 100%",
+    width: "100%",
+    height: "30%",
+    "& p": {
+      margin: "auto",
+      height: "100%",
+      width: "100%",
+      textAlign: "center",
+    },
+  },
+  Title: {
+    width: "60%",
+    margin: "auto",
+    paddingBottom: "10px",
+    "& label.Mui-focused": {
+      color: "#557174",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#c7cfb7",
+      },
+      "&:hover fieldset": {
+        borderColor: "#c7cfb7",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#557174",
+        borderWidth: "3px",
+      },
+    },
+  },
+  InputFile: {
+    width: "40%",
+    margin: "auto",
+  },
+  Content: {
+    width: "100%",
+    margin: "auto",
+    display: "flex",
+    paddingBottom: "10px",
+    "& label.Mui-focused": {
+      color: "#557174",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#c7cfb7",
+      },
+      "&:hover fieldset": {
+        borderColor: "#c7cfb7",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#557174",
+        borderWidth: "3px",
+      },
+    },
+  },
+  Button: {
+    float: "right",
+    fontWeight: "bold",
+    color: "#9dad7f",
   },
 }));
 

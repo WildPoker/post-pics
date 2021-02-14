@@ -3,18 +3,19 @@ import "firebase/storage";
 import firebase from "firebase";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyDmstNJHuJh4O8PbUwS64YYsC5qqHvXPHY",
-  authDomain: "post-pics-be167.firebaseapp.com",
-  projectId: "post-pics-be167",
-  storageBucket: "post-pics-be167.appspot.com",
-  messagingSenderId: "775090383164",
-  appId: "1:775090383164:web:72f52f8ee1aec659bf5639",
+  apiKey: "AIzaSyApqLLYzTgvyYlhP_nd2cK6HSLVGl55hJ0",
+  authDomain: "post-images-d6bd5.firebaseapp.com",
+  projectId: "post-images-d6bd5",
+  storageBucket: "post-images-d6bd5.appspot.com",
+  messagingSenderId: "403740193533",
+  appId: "1:403740193533:web:626ef4ba21b5e9c46c8494",
 };
 // Initialize Firebase
 const fire = firebase.initializeApp(firebaseConfig);
-const auth = fire.auth();
 const storage = firebase.storage();
+const auth = fire.auth();
 const db = fire.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
-export { auth, db, storage };
+export { auth, db, storage, timestamp };
 export default fire;

@@ -1,7 +1,14 @@
 import React from "react";
+import Login from "./Login";
+import Signup from "./Signup";
 
-function index() {
-  return <div></div>;
+function LogSign() {
+  return (
+    <>
+      <Login />
+      <Signup />
+    </>
+  );
 }
 
-export default index;
+export default LogSign;

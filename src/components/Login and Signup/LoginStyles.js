@@ -29,13 +29,14 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "white",
+        borderColor: "#c7cfb7",
       },
       "&:hover fieldset": {
-        borderColor: "white",
+        borderColor: "#c7cfb7",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#c7cfb7",
+        borderColor: "#557174",
+        borderWidth: "3px",
       },
     },
   },
